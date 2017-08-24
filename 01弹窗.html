@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body,html{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #mask{
+            background-color:#ccc;
+            opacity:0.7;
+            filter: alpha(opacity=70);
+            position:absolute;
+            left:0;
+            top:0;
+            z-index:50;
+        }
+        #smallWindow{
+            width: 300px;
+            height: 300px;
+            position:fixed;
+            z-index:99;
+            background:yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn1">弹出窗口</button>
+    <button id="btn2">弹出窗口(不带蒙版)</button>
+
+
+    <script src="js/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            function Model( bool) {
+                var sWidth=document.body.scrollWidth || document.documentElement.scrollWidth;
+                var sHeight=document.body.scrollHeight || document.documentElement.scrollHeight;
+
+                //获取页面的可视区域高度和宽度
+                var wHeight=document.documentElement.clientHeight || document.body.clientHeight;
+
+               if(bool == true){
+                   var oMask=document.createElement("div");
+                   oMask.id="mask";
+                   oMask.style.height=sHeight+"px";
+                   oMask.style.width=sWidth+"px";
+                   document.body.appendChild(oMask);
+                   oMask.onclick=function(){
+                       document.body.removeChild(oMask);
+                   };
+
+               }
+                var oLogin=document.createElement("div");
+                oLogin.id='smallWindow';
+                oLogin.innerHTML="<h1>弹出框</h1><span id='close'>点击关闭</span>";
+                document.body.appendChild(oLogin);
+
+                //获取登陆框的宽和高
+                var dHeight=oLogin.offsetHeight;
+                var dWidth=oLogin.offsetWidth;
+
+                //设置登陆框的left和top
+                oLogin.style.left= sWidth/2-dWidth/2+"px";
+                oLogin.style.top= wHeight/2-dHeight/2+"px";
+
+
+                var oClose=document.getElementById("close");
+
+                //点击关闭按钮关闭登陆框
+                oClose.onclick=function(){
+                    document.body.removeChild(oLogin);
+                    document.body.removeChild(oMask);
+
+                };
+
+
+               }
+
+            $("#btn1").click(function () {
+                Model(true);
+            })
+            $("#btn2").click(function () {
+                Model(false);
+            })
+        })
+    </script>
+</body>
+</html>
