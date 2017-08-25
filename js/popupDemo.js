@@ -22,7 +22,7 @@ window.onload = function () {
             oLogin.id = 'smallWindow';
             oLogin.style.height = boxHeight + "px";
             oLogin.style.width = boxWidth + "px";
-            oLogin.innerHTML = "<h1>弹出框</h1><span id='close'>点击关闭</span>";
+            oLogin.innerHTML = "<h1>弹出框</h1><span id='close'>x</span><input type='text' placeholder='请输入....'>";
             document.body.appendChild(oLogin);
 
             //点击关闭按钮关闭登陆框
@@ -38,10 +38,10 @@ window.onload = function () {
         }
 
         document.querySelector("#btn1").onclick = function () {
-            Model(true, 200, 200);
+            Model(true, 200, 400);
         }
         document.querySelector("#btn2").onclick = function () {
-            Model(false, 200, 200);
+            Model(false, 200, 400);
         }
 
     };
