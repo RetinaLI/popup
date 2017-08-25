@@ -1,0 +1,26 @@
+body,html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+#mask{
+    background-color:#ccc;
+    opacity:0.7;
+    filter: alpha(opacity=70);
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:50;
+}
+#smallWindow{
+    width: 300px;
+    height: 300px;
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index:99;
+    background:yellowgreen;
+}
