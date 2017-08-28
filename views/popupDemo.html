@@ -7,9 +7,47 @@
 </head>
 <body>
     <button id="btn1">弹出窗口</button>
+
     <button id="btn2">弹出窗口(不带蒙版)</button>
 
-    <script src="../script/jquery.js"></script>
+
     <script src="../js/popupDemo.js"></script>
+    <script>
+        var btn1=document.getElementById("btn1");
+        var btn2=document.getElementById("btn2");
+
+        btn1.addEventListener("click",function(){
+            popup.open({
+                /* width:"500",*/ //设置弹出层宽度，如果不填写为300
+                /*height:"300",*/ //设置弹出层高度，如果不填写为150
+                title:"弹出层标题",//设置标题
+                model:true,
+                content:"<input type='text' placeholder='请输入'>",
+            });
+            var inp = document.querySelector('input')
+            var val =inp .value;
+
+            if(val){
+                inp.value = val;
+            }else{
+                inp.value = localStorage.getItem('userInput')
+            }
+            inp.onblur = function () {
+                localStorage.setItem('userInput',inp.value);
+            }
+
+        });
+
+        btn2.addEventListener("click",function(){
+            popup.open({
+                width:400,
+                height:400,
+                title:"弹出层标题",//设置标题
+                model:false
+            });
+        });
+
+
+    </script>
 </body>
 </html>
