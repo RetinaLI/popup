@@ -19,7 +19,11 @@
             if(this.opt.model == true){
                 str += ' <div id="mask"></div> '
             }
-            document.body.innerHTML=str;
+
+            var divObj=document.createElement("div");
+            divObj.innerHTML = str;
+            var first=document.body.firstChild;//得到页面的第一个元素
+            document.body.insertBefore(divObj,first);
         },
 
         popStyle:function(){
