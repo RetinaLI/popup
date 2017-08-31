@@ -23,7 +23,7 @@
             var doExzist = document.getElementById("wrap");
             if(doExzist){
                 doExzist.innerHTML = str;
-                doExzist.style.display = 'block';
+                // doExzist.style.display = 'block';
 
             }else{
                 var divObj=document.createElement("div");
