@@ -2,7 +2,7 @@
  * Created by liwenming3 on 2017/8/25.
  */
 
-(function(window){
+(function(window,undefined){
     var popup = function(){};
     popup.prototype= {
         open: function (options) {
@@ -16,15 +16,24 @@
         },
         popHtml:function(){
             var str="";
-
             str += "<div class='box'><h1>"+this.opt.title+"</h1><strong class='close'>x</strong><div class='contain'></div></div>"
             if(this.opt.model == true){
                 str += ' <div class="mask"></div> '
+            };
+            var doExzist = document.getElementById("wrap");
+            if(doExzist){
+                doExzist.innerHTML = str;
+                doExzist.style.display = 'block';
+
+            }else{
+                var divObj=document.createElement("div");
+                divObj.id = "wrap";
+                divObj.innerHTML = str;
+                console.log(111);
+                var first=document.body.firstChild;//得到页面的第一个元素
+                document.body.insertBefore(divObj,first);
             }
-            var divObj=document.createElement("div");
-            divObj.innerHTML = str;
-            var first=document.body.firstChild;//得到页面的第一个元素
-            document.body.insertBefore(divObj,first);
+
         },
 
         popStyle:function(){
@@ -58,7 +67,7 @@
 
     window.popup=popup;
 
-})(window)
+})(window,undefined)
 
 var popup = new popup();
 
