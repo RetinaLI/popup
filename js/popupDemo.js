@@ -3,7 +3,8 @@
  */
 
 (function(window,undefined){
-    var popup = function(){};
+    var popup = function(){ };
+
     popup.prototype= {
         open: function (options) {
             this.opt = options;
@@ -20,19 +21,13 @@
             if(this.opt.model == true){
                 str += ' <div class="mask"></div> '
             };
-            var doExzist = document.getElementById("wrap");
-            if(doExzist){
-                doExzist.innerHTML = str;
-                // doExzist.style.display = 'block';
 
-            }else{
-                var divObj=document.createElement("div");
-                divObj.id = "wrap";
-                divObj.innerHTML = str;
-                console.log(111);
-                var first=document.body.firstChild;//得到页面的第一个元素
-                document.body.insertBefore(divObj,first);
-            }
+            var divObj=document.createElement("div");
+            divObj.innerHTML = str;
+            console.log(111);
+            var first=document.body.firstChild;//得到页面的第一个元素
+            document.body.insertBefore(divObj,first);
+
         },
 
         popStyle:function(){
