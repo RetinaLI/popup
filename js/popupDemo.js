@@ -2,8 +2,11 @@
  * Created by liwenming3 on 2017/8/25.
  */
 
-(function(window,undefined){
-    var popup = function(){ };
+(function(window,document){
+    var popup = function(){
+        this.w = null;
+    };
+
 
     popup.prototype= {
         open: function (options) {
@@ -24,7 +27,7 @@
 
             var divObj=document.createElement("div");
             divObj.innerHTML = str;
-            console.log(111);
+            // console.log(111);
             var first=document.body.firstChild;//得到页面的第一个元素
             document.body.insertBefore(divObj,first);
 
@@ -43,14 +46,12 @@
         },
         //删除弹出层和遮罩层
         closeDiv:function(){
-
-            var box=document.getElementsByClassName("box")[0];
             var mask=document.getElementsByClassName("mask")[0];
             if(mask){
                 mask.style.display = "none";
             }
-            box.style.display = "none";
-
+            console.log(this.parentNode);
+            this.parentNode.style.display = "none";
         },
         customDefine:function ( ){
             if(this.opt.content){
@@ -61,7 +62,7 @@
 
     window.popup=popup;
 
-})(window,undefined)
+})(window,document)
 
 var popup = new popup();
 
